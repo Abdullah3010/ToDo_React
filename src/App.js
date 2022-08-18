@@ -33,53 +33,55 @@ function App() {
 
     const deleteTask = async (id) =>{
 
-        await fetch(`http://localhost:5000/tasks/${id}`,
-        {
-            method : "DELETE"
-        })
+        // await fetch(`http://localhost:5000/tasks/${id}`,
+        // {
+        //     method : "DELETE"
+        // })
 
         setTasks(tasks.filter((task)=> task.id !== id))
     }
 
     const toggelIsDone = async (id) => {
-        const toToggleTask = await fetchTask(id) 
-        const updatedTask = {...toToggleTask,isDone :!toToggleTask.isDone}
+        // const toToggleTask = await fetchTask(id) 
+        // const updatedTask = {...toToggleTask,isDone :!toToggleTask.isDone}
 
-        const response = await fetch(`http://localhost:5000/tasks/${id}`,{
-            method : 'PUT',
-            headers : {
-                'Content-type' : 'application/json'
-            },
-            body: JSON.stringify(updatedTask) 
-        })
-        const data = await response.json()
-        setTasks(tasks.map((task) => task.id === id ?{...task, isDone : data.isDone}:task))
+        // const response = await fetch(`http://localhost:5000/tasks/${id}`,{
+        //     method : 'PUT',
+        //     headers : {
+        //         'Content-type' : 'application/json'
+        //     },
+        //     body: JSON.stringify(updatedTask) 
+        // })
+        // const data = await response.json()
+        setTasks(tasks.map((task) => task.id === id ?{...task, isDone : !task.isDone}:task))
     }
 
     const onAddTask = async (task) => {
 
-        const response = await fetch("http://localhost:5000/tasks",
-        {
-            method : "POST",
-            headers: {
-                'Content-type' : 'application/json'
-            },
-            body : JSON.stringify(task)
-        })
+        // const response = await fetch("http://localhost:5000/tasks",
+        // {
+        //     method : "POST",
+        //     headers: {
+        //         'Content-type' : 'application/json'
+        //     },
+        //     body : JSON.stringify(task)
+        // })
 
-        const data = await response.json()
+        // const data = await response.json()
 
-        setTasks([...tasks,data])
+        // setTasks([...tasks,data])
 
-
-        // var id
-        // if(tasks.length === 0) {
-        //      id = 0
-        // } else {
-        //      id = tasks[tasks.length-1].id + 1
-        // }
-        // task = {id,...task}
-        // setTasks([...tasks,task])
+        // const id = Math.floor(Math.random() * 10000) + 1
+        // const newTask = { id, ...task }
+        // setTasks([...tasks, newTask])
+        var id
+        if(tasks.length === 0) {
+             id = 0
+        } else {
+             id = tasks[tasks.length-1].id + 1
+        }
+        task = {id,...task}
+        setTasks([...tasks,task])
     }
 
     const toggelForm = () =>  setShowForm(!showForm)
