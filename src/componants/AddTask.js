@@ -15,6 +15,10 @@ const AddTask = ({onAddTask}) => {
             alert('Please enter task name!!')
             return
         }
+        if (!date) {
+            alert('Please enter task deadline!!')
+            return
+        }
 
         onAddTask({name,date,isDone})
 
@@ -35,10 +39,10 @@ const AddTask = ({onAddTask}) => {
                     onChange = {(e)=>setName(e.target.value)}/>
             </div>
             <div className='form-control'>
-                <label>Task Date</label>
+                <label>Deadline</label>
                 <input 
-                    type='text' 
-                    placeholder='Task Date' 
+                    type='date' 
+                    placeholder='Deadline' 
                     value={date} 
                     onChange = {(e)=>setDate(e.target.value)}/>
             </div>

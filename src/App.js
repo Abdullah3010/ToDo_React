@@ -10,26 +10,26 @@ function App() {
     const [showForm , setShowForm] = useState(false)
     const [tasks, setTasks] = useState([])
 
-    useEffect(() => {
-        const getTasks = async () => {
-            const fetchedTasks = await fetchTasks()
-            setTasks(fetchedTasks)
-        } 
+    // useEffect(() => {
+    //     const getTasks = async () => {
+    //         const fetchedTasks = await fetchTasks()
+    //         setTasks(fetchedTasks)
+    //     } 
 
-        getTasks()
-    },[])
+    //     getTasks()
+    // },[])
 
-    const fetchTasks = async () => {
-        const response = await fetch("http://localhost:5000/tasks")
-        const data = await response.json()
-        return data
-    }
+    // const fetchTasks = async () => {
+    //     const response = await fetch("http://localhost:5000/tasks")
+    //     const data = await response.json()
+    //     return data
+    // }
 
-    const fetchTask = async (id) => {
-        const response = await fetch(`http://localhost:5000/tasks/${id}`)
-        const data = await response.json()
-        return data
-    }
+    // const fetchTask = async (id) => {
+    //     const response = await fetch(`http://localhost:5000/tasks/${id}`)
+    //     const data = await response.json()
+    //     return data
+    // }
 
     const deleteTask = async (id) =>{
 
